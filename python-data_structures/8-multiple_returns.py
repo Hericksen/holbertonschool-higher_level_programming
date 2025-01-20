@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def multiple_returns(sentence):
     # If the sentence is empty, return 0 and None
     if sentence == "":
