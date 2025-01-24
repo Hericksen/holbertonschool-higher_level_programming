@@ -3,6 +3,7 @@
 This module provides basic arithmetic operations with input validation.
 """
 
+
 def add_integer(a, b=98):
     """
     Adds two integers or floats, casting them to integers if necessary.
