@@ -3,5 +3,8 @@
 
 
 class BaseGeometry:
+    '''Base Geometry class'''
+
     def area(self):
+        '''fnc for area'''
         raise Exception("area() is not implemented")

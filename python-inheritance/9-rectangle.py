@@ -3,6 +3,8 @@
 
 
 class BaseGeometry:
+    '''Base Geometry class'''
+
     def area(self):
         raise Exception("area() is not implemented")
 
@@ -14,6 +16,8 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
+    '''Rectangle class'''
+
     def __init__(self, width, height):
         self.integer_validator("width", width)
         self.integer_validator("height", height)
@@ -21,6 +25,7 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
     def area(self):
+        '''fnc for area'''
         return self.__width * self.__height
 
     def __str__(self):
