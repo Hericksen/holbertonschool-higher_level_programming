@@ -6,6 +6,7 @@ class BaseGeometry:
     '''Base Geometry class'''
 
     def area(self):
+        '''fnc of area'''
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
@@ -20,6 +21,7 @@ class Rectangle(BaseGeometry):
     '''Rectangle class'''
 
     def __init__(self, width, height):
+        '''def for init rectangle'''
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -38,6 +40,7 @@ class Square(Rectangle):
     '''Square class'''
 
     def __init__(self, size):
+        '''def for init rectangle'''
         self.integer_validator("size", size)
         self.__size = size
         super().__init__(size, size)
