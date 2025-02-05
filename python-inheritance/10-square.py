@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Mode - 9-base_geometry'''
+'''Mode - 10-base_geometry'''
 
 
 class BaseGeometry:
