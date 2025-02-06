@@ -11,11 +11,15 @@ class Animal(ABC):
         pass
 
 # Implementing the Dog subclass
+
+
 class Dog(Animal):
     def sound(self):
         return "Bark"
 
 # Implementing the Cat subclass
+
+
 class Cat(Animal):
     def sound(self):
         return "Meow"
