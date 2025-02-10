@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+'''Pascal's Triangle'''
 def pascal_triangle(n):
     """Returns a list of lists representing Pascal's triangle up to level n."""
     if n <= 0:

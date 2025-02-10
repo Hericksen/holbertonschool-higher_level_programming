@@ -12,8 +12,8 @@ class Student:
     '''Retrive dictonnary representation'''
 
     def to_json(self, attrs=None):
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        if isinstance(attrs, list) and all(isinstance(x, str) for x in attrs):
+            return {x: getattr(self, x) for x in attrs if hasattr(self, x)}
         return self.__dict__
 
     def reload_from_json(self, json):
