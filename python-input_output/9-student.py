@@ -10,4 +10,7 @@ class Student:
         self.age = age
     '''Retrieve dict representation'''
     def to_json(self):
-        return self.__dict__
+        dictionary = {}
+        if hasattr(self, "__dict__"):
+            dictionary = self.__dict__.copy()
+        return dictionary
