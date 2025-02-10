@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-'''Student to JSON'''
+"""Module to create the Student class."""
 
 
 class Student:
-    '''Constructor'''
-    def __int__(self, first_name, last_name, age):
+    """Class that defines a student with first name, last name, and age."""
+
+    def __init__(self, first_name, last_name, age):
+        """Initializes the student with first name, last name, and age."""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
-    '''Retrieve dict representation'''
+
     def to_json(self):
-        dictionary = {}
-        if hasattr(self, "__dict__"):
-            dictionary = self.__dict__.copy()
-        return dictionary
+        """Returns the dictionary representation of the Student instance."""
+        return self.__dict__
