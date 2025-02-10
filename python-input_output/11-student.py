@@ -4,8 +4,9 @@
 
 class Student:
     '''Class student'''
+
     def __int__(self, first_name, last_name, age):
-        '''constructior'''
+        '''Constructior'''
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
@@ -16,7 +17,8 @@ class Student:
             return {x: getattr(self, x) for x in attrs if hasattr(self, x)}
         return self.__dict__
 
-    def reload_from_json(self, json):
+    def reload_from_json(self, json: dict):
         '''Replaces all attributes of the Student instance'''
-        for key in json:
-            self.__dict__[key] = json[key]
+        for key, value in json.items():
+            if hasattr(self, key):
+                setattr(self, key, value)
