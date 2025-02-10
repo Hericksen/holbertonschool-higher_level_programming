@@ -4,7 +4,7 @@ import sys
 
 
 def save_to_json_file(my_obj, filename):
-    '''function that writes an Object to a text file, using a JSON representation'''
+    '''function that writes an Object to a text file'''
     with open(filename, "w") as outfile:
         json.dump(my_obj, outfile)
 
