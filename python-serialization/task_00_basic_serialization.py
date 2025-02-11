@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import json
 
+
 def serialize_and_save_to_file(data, filename):
     """
     Serializes a Python dictionary to a JSON file.
@@ -11,6 +12,7 @@ def serialize_and_save_to_file(data, filename):
         print(f"Data serialized and saved to '{filename}'.")
     except Exception as e:
         print(f"Error serializing data: {e}")
+
 
 def load_and_deserialize(filename):
     """
