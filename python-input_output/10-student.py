@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-'''Student to JSON'''
+"""Class Student"""
 
 
 class Student:
-    '''Constructor'''
-
-    def __int__(self, first_name, last_name, age):
+    def __init__(self, first_name, last_name, age):
+        """Public instance attributes"""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
-    '''Retrive dict representation'''
 
     def to_json(self, attrs=None):
+        """return  dictionary representation of a Student"""
         if isinstance(attrs, list):
-            return {x: getattr(self, x) for x in attrs
-                    if hasattr(self, x)}
+            return {attr: getattr(self, attr) for attr in attrs
+                    if hasattr(self, attr)}
         return self.__dict__
