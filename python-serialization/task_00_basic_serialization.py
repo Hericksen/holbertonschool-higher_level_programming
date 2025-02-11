@@ -1,28 +1,17 @@
 #!/usr/bin/python3
+"""" Module for serialize and deserialize operations."""
+
+
 import json
-"""0. Basic Serialization"""
 
 
 def serialize_and_save_to_file(data, filename):
-    """
-    Serializes a Python dictionary to a JSON file.
-    """
-    try:
-        with open(filename, 'w', encoding='utf-8') as file:
-            json.dump(data, file, indent=4)
-        print(f"Data serialized and saved to '{filename}'.")
-    except Exception as e:
-        print(f"Error serializing data: {e}")
+    """Serialize data and save it to a JSON file."""
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
 
 
 def load_and_deserialize(filename):
-    """
-    Loads and deserializes JSON data from a file.
-    """
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        return data
-    except Exception as e:
-        print(f"Error loading data: {e}")
-        return None
+    """Load and deserialize data from a JSON file."""
+    with open(filename, 'r', encoding='utf-8') as f:
+        return json.load(f)
