@@ -1,0 +1,7 @@
+    def get_books_by_series(self, serie: str):
+        if serie not in self._series:
+            raise ValueError("La serie n'existe pas")
+
+    def get_comic(self, author: str, title: str):
+        book = super().get_book(author, title)
+        return "Coming trouvé {book}"
