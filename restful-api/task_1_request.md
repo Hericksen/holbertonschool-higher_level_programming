@@ -24,6 +24,4 @@ curl -X POST -d "title=foo&body=bar&userId=1" https://jsonplaceholder.typicode.c
 ```
 
 ## **2. Conclusion**
-Master **curl** for API testing and debugging. 🚀
-
-q
+Master **curl** for API testing and debugging. 
