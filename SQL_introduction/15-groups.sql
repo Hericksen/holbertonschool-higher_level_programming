@@ -1,2 +1,5 @@
 -- Number by score
-SELECT AVG(score) AS average FROM second_table;
+SELECT score, COUNT(*) AS Number
+FROM second_table
+GROUP BY score
+ORDER BY number DESC;
