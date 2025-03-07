@@ -1,29 +1,19 @@
 #!/usr/bin/python3
-"""
-Script that takes in an argument and displays all values in the states table
-of hbtn_0e_0_usa where name matches the argument, safe from SQL injections.
-"""
+"""Module listing all cities from the database"""
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    # Get MySQL credentials and state name from arguments
-    username, password, database, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database, port=3306)
-
-    # Create a cursor object
+    db = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
     cur = db.cursor()
+    cur.execute(
+        """SELECT cities.id, cities.name, states.name
+                FROM cities
+                INNER JOIN states ON cities.state_id = states.id
+                ORDER BY cities.id ASC;""")
+    rows = cur.fetchall()
 
-    # Execute SQL query to select states where name matches the argument safely, ordered by id
-    query = "SELECT * FROM states WHERE name LIKE BINARY %s ORDER BY id ASC"
-    cur.execute(query, (state_name,))
-
-    # Fetch and print the results
-    for state in cur.fetchall():
-        print(state)
-
-    # Close cursor and database connection
+    for row in rows:
+        print(row)
     cur.close()
     db.close()

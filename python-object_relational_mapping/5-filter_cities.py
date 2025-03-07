@@ -1,31 +1,23 @@
 #!/usr/bin/python3
-"""
-Script that takes in the name of a state as an argument and lists all cities of that state,
-using the database hbtn_0e_4_usa, safe from SQL injections.
-"""
+"""Module listing all cities from the state passed in argument"""
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    # Get MySQL credentials and state name from arguments
-    username, password, database, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database, port=3306)
-
-    # Create a cursor object
+    db = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
     cur = db.cursor()
+    cur.execute(
+        """SELECT name
+                FROM cities
+                 WHERE cities.state_id = (SELECT id
+                    FROM states
+                    WHERE name = %(state)s)
+                ORDER BY cities.id ASC""",
+        {"state": argv[4]})
+    rows = list(cur.fetchall())
 
-    # Execute SQL query to select cities belonging to the specified state, ordered by id
-    query = ("SELECT cities.id, cities.name FROM cities "
-             "JOIN states ON cities.state_id = states.id "
-             "WHERE states.name = %s ORDER BY cities.id ASC")
-    cur.execute(query, (state_name,))
-
-    # Fetch and format the results
-    cities = [city[1] for city in cur.fetchall()]
-    print(", ".join(cities))
-
-    # Close cursor and database connection
+    for i in range(len(rows)):
+        rows[i] = str(rows[i][0])
+    print(', '.join(rows))
     cur.close()
     db.close()
